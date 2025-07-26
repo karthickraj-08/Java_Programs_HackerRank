@@ -1,0 +1,18 @@
+import java.util.Scanner;
+
+public class TimeValidator {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String time = sc.nextLine();
+        String[] parts = time.split(":");
+            int h = Integer.parseInt(parts[0]);
+            int m = Integer.parseInt(parts[1]);
+            int s = Integer.parseInt(parts[2]);
+            if (h >= 0 && h < 24 && m >= 0 && m < 60 && s >= 0 && s < 60) {
+                System.out.println("Valid");
+            } else {
+                System.out.println("Not Valid");
+            }
+        } 
+    }
+
