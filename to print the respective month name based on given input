@@ -1,0 +1,26 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n=sc.nextInt();
+        if(n>0 &&n<=12){
+        String [] month = {"January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December" };
+        
+        String result = month[n - 1];
+        System.out.println(result);
+        }
+        else{
+            System.out.println("Invalid");
+        }
+        //System.out.println((month >= 1 && month <= 12) ? month[month - 1] : "Invalid");
+        
+        
+    }
+}
