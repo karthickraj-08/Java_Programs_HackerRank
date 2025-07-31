@@ -1,0 +1,41 @@
+Sample Input 0
+
+4
+Sample Output 0
+
+*******
+**   **
+* * * *
+*  *  *
+* * * *
+**   **
+*******
+
+
+
+
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n,row,col,val;
+        n=sc.nextInt();
+        n = n*2-1;
+        for(row=1;row<=n;row++){
+            for(col=1;col<=n;col++){
+                if(row==1 || row==n || col==1 || col==n || col+row==n+1 || col==row )
+                    System.out.print("*");
+                else
+                    System.out.print(" ");
+        }
+            System.out.println();
+        }
+    }
+}
