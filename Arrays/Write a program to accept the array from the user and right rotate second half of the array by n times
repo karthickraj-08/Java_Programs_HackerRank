@@ -1,0 +1,55 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int size = sc.nextInt();
+        int[] arr = new int[size];
+
+        for (int i = 0; i < size; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        int n = sc.nextInt();
+
+        int halfStart = size / 2;
+        int secondHalfLength = size - halfStart;
+
+        n = n % secondHalfLength; 
+
+        if (n != 0) {
+            int[] secondHalf = new int[secondHalfLength];
+
+            for (int i = 0; i < secondHalfLength; i++) {
+                secondHalf[i] = arr[halfStart + i];
+            }
+
+            int[] rotated = new int[secondHalfLength];
+
+
+            for (int i = 0; i < n; i++) {
+                rotated[i] = secondHalf[secondHalfLength - n + i];
+            }
+
+            for (int i = n; i < secondHalfLength; i++) {
+                rotated[i] = secondHalf[i - n];
+            }
+
+      
+            for (int i = 0; i < secondHalfLength; i++) {
+                arr[halfStart + i] = rotated[i];
+            }
+        }
+
+        for (int i = 0; i < size; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+}
