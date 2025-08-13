@@ -1,0 +1,49 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String email = sc.nextLine().trim();
+
+        if (isValidEmail(email)) {
+            System.out.println("Valid");
+        } else {
+            System.out.println("Invalid");
+        }
+
+        sc.close();
+    }
+
+    private static boolean isValidEmail(String email) {
+
+        if (email.contains(" ")) {
+            return false;
+        }
+
+        int atPos = email.indexOf('@');
+        int lastAtPos = email.lastIndexOf('@');
+
+        if (atPos == -1 || atPos != lastAtPos) {
+            return false;
+        }
+
+        int dotPos = email.indexOf('.', atPos);
+        if (dotPos == -1) {
+            return false; 
+        }
+
+        String local = email.substring(0, atPos);
+        String domain = email.substring(atPos + 1);
+
+        if (local.isEmpty() || domain.isEmpty()) {
+            return false;
+        }
+
+        return true;
+    }
+}
