@@ -1,0 +1,64 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+       Scanner sc = new Scanner(System.in);
+        String input = sc.nextLine();
+
+        String isbn = input.replace("-", "");
+
+        if (isValidISBN10(isbn)) {
+            System.out.println("ISBN Number is Valid");
+        } else if (isValidISBN13(isbn)) {
+            System.out.println("ISBN Number is Valid");
+        } else {
+            System.out.println("ISBN Number is Not Valid");
+        }
+
+        sc.close();
+    }
+
+    private static boolean isValidISBN10(String isbn) {
+        if (isbn.length() != 10) return false;
+
+        int sum = 0;
+        for (int i = 0; i < 9; i++) {
+            if (!Character.isDigit(isbn.charAt(i))) return false;
+            sum += (isbn.charAt(i) - '0') * (i + 1);
+        }
+
+        char last = isbn.charAt(9);
+        if (last == 'X') {
+            sum += 10 * 10;
+        } else if (Character.isDigit(last)) {
+            sum += (last - '0') * 10;
+        } else {
+            return false;
+        }
+
+        return sum % 11 == 0;
+    }
+
+    private static boolean isValidISBN13(String isbn) {
+        if (isbn.length() != 13) return false;
+
+        int sum = 0;
+        for (int i = 0; i < 13; i++) {
+            if (!Character.isDigit(isbn.charAt(i))) return false;
+
+            int digit = isbn.charAt(i) - '0';
+            if (i % 2 == 0) {
+                sum += digit;
+            } else {
+                sum += digit * 3;
+            }
+        }
+
+        return sum % 10 == 0;
+    }
+}
